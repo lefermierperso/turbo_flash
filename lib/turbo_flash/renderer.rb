@@ -4,7 +4,7 @@ module TurboFlash
   module Renderer
     def render(*args)
       result = super
-      if request.format.turbo_stream?
+      if request.format.turbo_stream? && result.is_a?(String)
         return result if flash.turbo.cleared?
 
         flashed = false
